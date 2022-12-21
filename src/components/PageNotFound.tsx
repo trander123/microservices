@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function ErrorRoute() {
+export function PageNotFound() {
   return (
     <div className="text-center">
       <p className="text-red-700 mb-5">Page Not Found!</p>

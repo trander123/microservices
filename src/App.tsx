@@ -4,7 +4,7 @@ import { Footer } from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { States } from "./components/States";
-import { ErrorRoute } from "./components/ErrorRoute";
+import { PageNotFound } from "./components/PageNotFound";
 function App() {
   return (
     <div className="flex flex-col min-w-screen min-h-screen">
@@ -12,7 +12,7 @@ function App() {
       <main className="flex items-center justify-center p-4 h-full">
         <Routes>
           <Route path="/" element={<States />} />
-          <Route path="*" element={<ErrorRoute />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
       <Footer />
