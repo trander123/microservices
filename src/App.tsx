@@ -2,9 +2,9 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./components/Home";
 import { States } from "./components/States";
 import { PageNotFound } from "./components/PageNotFound";
+import { Dictionary } from "./components/Dictionary";
 function App() {
   return (
     <div className="flex flex-col min-w-screen min-h-screen">
@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<States />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/dictionary" element={<Dictionary />} />
         </Routes>
       </main>
       <Footer />

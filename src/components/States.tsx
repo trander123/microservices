@@ -9,10 +9,6 @@ export function States() {
     setStates(statesData);
   }, []);
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-  }
-
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { value } = e.target;
     if (value.trim()) {
