@@ -3,33 +3,36 @@ import axios from "axios";
 import { WordInfo } from "../interfaces/dictionary";
 
 const initialWord = "hello";
-const initalWordInfo = {
+const initialWordInfo = {
   word: initialWord,
   definitions: [],
 };
 
 export function Dictionary() {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(initialWord);
+  const [isValidWord, setIsValidWord] = useState<boolean>();
   const [word, setWord] = useState(initialWord);
-  const [wordInfo, setWordInfo] = useState<WordInfo>(initalWordInfo);
+  const [wordInfo, setWordInfo] = useState<WordInfo>(initialWordInfo);
 
   useEffect(() => {
     async function getWord() {
-      const res = await axios.get(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-      );
-      const data = res.data;
-      console.log(data);
-      console.log(
-        data[0].meanings[0].definitions.map((e: any) => e.definition)
-      );
+      try {
+        const res = await axios.get(
+          `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+        );
 
-      setWordInfo({
-        word: word,
-        definitions: data[0].meanings[0].definitions.map(
-          (e: any) => e.definition
-        ),
-      });
+        const data = res.data;
+
+        setIsValidWord(true);
+        setWordInfo({
+          word: word,
+          definitions: data[0].meanings[0].definitions.map(
+            (e: any) => e.definition
+          ),
+        });
+      } catch (error) {
+        setIsValidWord(false);
+      }
     }
 
     getWord();
@@ -46,17 +49,40 @@ export function Dictionary() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div>
+    <div className="flex flex-col my-4 bg-red-50 p-5 rounded-md">
+      <div className="flex justify-center items-center mb-4">
         <form onSubmit={handleSubmit}>
-          <input type="text" value={search} onChange={handleOnChange} />
-          <button type="submit">Search</button>
+          <div className="flex space-x-2">
+            <div className="">
+              <input
+                type="text"
+                value={search}
+                onChange={handleOnChange}
+                className="h-full rounded-sm outline-none px-2"
+              />
+              <p className=" text-xs text-red-500">
+                {!isValidWord && "Word doesn't exist!"}
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              className=" bg-green-400 px-8 py-2 font-bold text-gray-100 rounded-sm"
+            >
+              Search
+            </button>
+          </div>
         </form>
       </div>
-      <div className="flex flex-col justify-center items-center">
-        <p>{wordInfo.word.toUpperCase()}</p>
+      <div className="">
+        <div className="text-center">
+          <p className="text-2xl font-bold tracking-widest mb-4">
+            {wordInfo.word.toUpperCase()}
+          </p>
+        </div>
+
         {wordInfo.definitions.map((definition) => (
-          <div key={definition}>{definition}</div>
+          <p key={definition}>{definition}</p>
         ))}
       </div>
     </div>
