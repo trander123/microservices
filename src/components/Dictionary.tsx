@@ -10,7 +10,7 @@ const initialWordInfo = {
 
 export function Dictionary() {
   const [search, setSearch] = useState(initialWord);
-  const [isValidWord, setIsValidWord] = useState<boolean>();
+  const [isValidWord, setIsValidWord] = useState(true);
   const [word, setWord] = useState(initialWord);
   const [wordInfo, setWordInfo] = useState<WordInfo>(initialWordInfo);
 
