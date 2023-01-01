@@ -8,6 +8,9 @@ export function Header() {
         <Link to={"/"} className=" font-bold tracking-widest">
           STATES
         </Link>
+        <Link to={"/calculator"} className=" font-bold tracking-widest">
+          CALCULATOR
+        </Link>
         <Link to={"/dictionary"} className=" font-bold tracking-widest">
           DICTIONARY
         </Link>

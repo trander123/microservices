@@ -27,7 +27,8 @@ export function States() {
 
   return (
     <div className="flex flex-col my-4 bg-red-50 p-5 rounded-md">
-      <div>
+      <div className="text-center">
+        <h1 className="mb-4 text-2xl font-bold">STATES</h1>
         <input
           placeholder="Search"
           type="text"

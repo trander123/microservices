@@ -50,6 +50,10 @@ export function Dictionary() {
 
   return (
     <div className="flex flex-col my-4 bg-red-50 p-5 rounded-md">
+      <div className="text-center">
+        <h1 className="mb-8 text-2xl font-bold">DICTIONARY</h1>
+      </div>
+
       <div className="flex justify-center items-center mb-4">
         <form onSubmit={handleSubmit}>
           <div className="flex space-x-2">
@@ -67,7 +71,7 @@ export function Dictionary() {
 
             <button
               type="submit"
-              className=" bg-green-400 px-8 py-2 font-bold text-gray-100 rounded-sm"
+              className=" bg-gradient-to-br from-red-600 via-red-400 to-red-200  px-8 py-2 font-bold text-gray-100 rounded-sm"
             >
               Search
             </button>
