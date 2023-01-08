@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { numberFormatter } from "../helpers/numberFormatter";
 
 export const Calculator = () => {
   const [value, setValue] = useState<string>("");
@@ -38,7 +39,9 @@ export const Calculator = () => {
         </form>
         <div className="text-center flex items-center justify-center space-x-4 ">
           <p className="">Result:</p>
-          <p className="text-3xl text-red-400">{result || "0"}</p>
+          <p className="text-3xl text-red-400">
+            {numberFormatter(result) || "0"}
+          </p>
         </div>
       </div>
     </>
